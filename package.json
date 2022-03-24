@@ -1,0 +1,21 @@
+{
+  "name": "intersection-observer",
+  "version": "1.0.0",
+  "description": "Cet API Intersection Observer va vous permettre de detecter lorsque un element rentre en intersection avec un element parent comme par exemple la vue, un exemple simple d'utilisation c'est sur un site `One Page` c'est que lorsque l'on scroll on a envie que les elements qui apparaissent dans la vue se mettent à apparaitre avec une animation ou avec un effet de transition. Cet objet nous permet d'optimiser les performance pour eviter de faire des traitement au scroll ou au resize.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start":"sass ./assets/scss/main.scss ./assets/css/app.css --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/NdekoCode/discovery-intersectionObserver.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/NdekoCode/discovery-intersectionObserver/issues"
+  },
+  "homepage": "https://github.com/NdekoCode/discovery-intersectionObserver#readme"
+}

@@ -1,0 +1,68 @@
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.container {
+    max-width: 1150px;
+    margin: 0 auto;
+    margin-top: 50px;
+}
+
+.row {
+    display: flex;
+    align-items: center;
+    margin-bottom: 50px;
+}
+
+.row-inverted {
+    flex-direction: row-reverse;
+
+    .text {
+        text-align: right;
+    }
+}
+
+.text {
+    width: 65%;
+
+
+    &.not-visible {
+        transform: translateX(50px);
+    }
+}
+
+.text p {
+    text-align: justify;
+}
+
+.image {
+    width: 33%;
+    padding: 10px;
+
+    &.not-visible {
+        transform: translateX(-50px);
+    }
+}
+
+.image img {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+// On prepare les animations de ces deux elements pour l'IntersectionObserver
+.image,
+.text {
+    transform: translateX(0);
+    opacity: 1;
+    justify-content: baseline;
+    transition: transform 0.4s, opacity 0.4s;
+}
