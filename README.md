@@ -17,8 +17,8 @@ Sur cet `IntersectionObserver` lorsque l'on veut l'initialiser il prend deux par
 
 - **`root`**: Qui permet de preciser par rapport à quel element on va verifier les intersections et par defaut ça va etre la fenetre du navigateur mais on peux choisir une `div` ou un tout autre element HTML
 - **`rootMargin`**: Qui permet d'elargir la zone visible de l'element
--**`threshold`**: Qui permet de dire `"Quel pourcentage de l'element doivent etre en intersection pour que cet evenement soit declencher"` et on va en preciser plusieurs, 0.5 si c'est plus de la moitier de l'element qui est visible, 1 si tout l'element est visible,0.25 si c'est seulement 25% de l'element qui est visible,...
-Le threshold est un tableau, donc vous pouvez preciser plusieurs parametres donc si on a deux threshold ça veut dire qu'il va declencher le systeme d'observer à deux moments, une fois lorsque l'element va apparaitre dans `root` pour notre cas c'est la fenetre et une autre fois lorsque l'element va disparaitre de `root`, par exemple: threshold: [`0.5`,`0`] càd lorsque la motier de l'element observer sera visible càd 50% de l'element et 0 pour dire lorsque la totalité de l'element observer aura disparus de `root`
+- **`threshold`**: Qui permet de dire `"Quel pourcentage de l'element doivent etre en intersection pour que cet evenement soit declencher"` et on va en preciser plusieurs, 0.5 si c'est plus de la moitier de l'element qui est visible, 1 si tout l'element est visible,0.25 si c'est seulement 25% de l'element qui est visible,...
+Le threshold est un tableau, donc vous pouvez preciser plusieurs parametres donc si on a deux threshold ça veut dire qu'il va declencher le systeme d'observer à deux moments, une fois lorsque l'element va apparaitre dans `root` pour notre cas c'est la fenetre et une autre fois lorsque l'element va disparaitre de `root`, par exemple: threshold: `[0.5,0]` càd lorsque la motier de l'element observer sera visible càd 50% de l'element et 0 pour dire lorsque la totalité de l'element observer aura disparus de `root`
 
 ```{JS}
  let observer = new IntersectionObserver(function (entries) {
@@ -30,7 +30,7 @@ Le threshold est un tableau, donc vous pouvez preciser plusieurs parametres donc
 
 Une fois que l'on a notre objet `Observer` qui est déjà initialiser il va falloir indiquer `qu'est-ce que l'on souhaite Observer` et donc il va falloir recuperer un element et l'Observer
 
-Sacher que dès que l'on observe un element à chaque fois que cet element va se mettre en intersection avec `root` on aura une nouvelle instence de l'`IntersectionObserverEntry` et cet object aussi a des parametres particulier qui sont:
+Sacher que dès que l'on observe un element à chaque fois que cet element va se mettre en intersection avec `root` on aura une nouvelle instance de l'`IntersectionObserverEntry` et cet object aussi a des parametres particulier qui sont:
 
 - **boundingClientRect**: Qui est un object qui nous donne des informations sur l'element observer lors de l'intersection comme sa position par rapport au haut (`top`), au bas(`bottom`), à gauche `left`, à droite `right`, sa largeur `width`, sa hauteur `heigh`
 - **intersectionRatio**: C'est le pourcentage de l'element qui est visible à l'ecran, c'est aussi quelque chose que l'on peut utiliser pour detecter si un element est visible ou non, si un element se masque cet element repasse à zero càd que cet element n'est plus visible
@@ -40,3 +40,7 @@ Cet Object nous simplifie vraiment la vie, on peut utiliser l'intersectionObserv
 
 - L'Utiliser pour un `lazy loading` par exemple on scroll une page et lorsque l'image devient visible à l'écran c'est à ce moment là que on va la faire apparaitre par exemple avec un data-src ou autre
 - Avec un `infinite Scroll`, donc par exemple vous pouvez mettre une div qui vous servira d'espions et lorsque cette div devient visible vous declencher le chargement des elements suivants en AJAX
+
+## Section
+
+L'idée ça va etre de faire en sorte que les sections appairaissent au fil et à mesure du defilement de notre page, par exemple quand on a 70% d'une section qui apparait

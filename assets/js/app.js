@@ -11,7 +11,6 @@ let observer = new IntersectionObserver(function (entries) {
     } else {
       // Si l'element ne pas visible à 50% on lui ajoute la classe
       entrie.target.classList.add('not-visible');
-      console.log("Item invisible");
     }
   } )
 }, {

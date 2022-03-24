@@ -27,6 +27,7 @@ body {
 }
 .row-inverted .text {
   text-align: right;
+  margin-right: 50px;
 }
 
 .text {
@@ -60,6 +61,27 @@ body {
   opacity: 1;
   justify-content: baseline;
   transition: transform 0.4s, opacity 0.4s;
+}
+
+@media only screen and (max-width: 900px) {
+  .container {
+    padding: 0 15px;
+  }
+}
+main.container {
+  margin-top: 0;
+}
+main.container > h1 {
+  margin: 0;
+}
+
+main > section {
+  opacity: 1;
+  transition: 0.3s;
+}
+
+.hidden {
+  opacity: 0;
 }
 
 /*# sourceMappingURL=app.css.map */
