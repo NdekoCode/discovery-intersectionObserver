@@ -14,8 +14,8 @@ let observer = null;
  */
 const activateElement = function (element) {
   const id = element.getAttribute('id');
-  
-      // Un lien dont l'attribut href contient #id
+
+  // Un lien dont l'attribut href contient #id
   const anchor = document.querySelector(`a[href*="#${id}"]`);
 
   // Si c'est null alors pas la peine d'aller plus loin
@@ -33,14 +33,14 @@ const activateElement = function (element) {
 /**
  * @description La fonction à appeler lorsque un element rentre ou sort de la zone d'affichage
  * @param {IntersectionObserverEntry []} entries Les elements qui viennent de rentrer ou qui viennent de sortir de la zone d'affichage
-  *  @param {IntersectionObserver} observer L'IntersectionObserver qui est actuellemet affecter par mon systeme de callback
+ *  @param {IntersectionObserver} observer L'IntersectionObserver qui est actuellemet affecter par mon systeme de callback
  * @author NdekoCode
  */
 const handleIntersect = (entries, observer) => {
   entries.forEach(function (entry) {
     if (entry.intersectionRatio > 0) {
       activateElement(entry.target);
-      
+
     }
   })
 }
@@ -56,30 +56,30 @@ const handleIntersect = (entries, observer) => {
 const observe = function (elements) {
   if (observer !== null) {
     console.log("A observe")
-    elements.forEach (element => observer.unobserve(element));
+    elements.forEach(element => observer.unobserve(element));
   }
 
   /** @type {number} Permettra de gerer la marge negative pour les element d'une grande hauteur à fin de faire en sorte qu'il soit toujours observer */
   const y = Math.round(window.innerHeight * ratio);
-  
-  /** @type {number} Permet de faire en sorte que l'intersectionObserver soit une simple bar de 1px, ainsi on creer une barre à la place d'un rectangle au niveau de l'intersectionObserver*/
-  const spaceY =window.innerHeight - y - 1;
 
-  
+  /** @type {number} Permet de faire en sorte que l'intersectionObserver soit une simple bar de 1px, ainsi on creer une barre à la place d'un rectangle au niveau de l'intersectionObserver*/
+  const spaceY = window.innerHeight - y - 1;
+
+
   observer = new IntersectionObserver(handleIntersect, {
     // On doit mettre une marge negative qui est egale à 60% de la taille de l'écran avec `y` et en au on remet la barre de L'Observer à 1px avec spaceY
     rootMargin: `-${spaceY}px 0px -${y}px 0px`
   });
 
   // On parcour nos elements pour les observer
-  elements.forEach (spy => {
+  elements.forEach(spy => {
     // Sur chaque element on y greffe un observateur
     observer.observe(spy);
   });
 }
 
 /**
- * @description Permet d'appeler une fonction après un delait et ainsi eviter qu'une fonction soit appeler plusieur fois comme par exemple lors d'un "scroll" ou d'un "resize"
+ * @description Permet d'appeler une fonction après un delait et ainsi eviter qu'une fonction soit appeler plusieur fois comme par exemple lors d'un "scroll" ou d'un "resize", cela permet d'eviter trop de calcul
  * @param {Function} callback
  * @param {number} delay
  * @return {Function} 
@@ -87,22 +87,26 @@ const observe = function (elements) {
  */
 const debounce = function (callback, delay) {
   let timer;
-  return function(){
-      const args = arguments;
-      const context = this;
-      clearTimeout(timer);
-      timer = setTimeout(function(){
-          callback.apply(context, args);
-      }, delay)
+  return function () {
+    const args = arguments;
+    const context = this;
+    clearTimeout(timer);
+    timer = setTimeout(function () {
+      callback.apply(context, args);
+    }, delay)
   }
 }
 // Si on a pas d'element que l'on souhaite espionner alors ce n'est meme pas la peine de créer un observeur
 if (spies.length > 0) {
   observe(spies);
+  let windowH = window.innerHeight;
   // On resize on lance une fonction qui aura comme role de relancer l'observation des espions
-  // On va debouncer cette fonction par: On va lui dire, ne lance pas directement l'observer mais debounnce cette fonction sur 500ms ie quand l'utilisateur arrete de redimensionner juste apres 500 ms appele cette fonction
-  window.addEventListener('resize', debounce (function () {
-    observe(spies);
+  // On va debouncer cette fonction par: On va lui dire, ne lance pas directement l'observer mais debounnce cette fonction sur 500ms ie quand l'utilisateur arrete de redimensionner juste apres 500 ms appele cette fonction, cela permet d'eviter trop de calcul
+  window.addEventListener('resize', debounce(function () {
+    if (window.innerHeight !== windowH) {
+      observe(spies);
+      windowH = window.innerHeight;
+    }
 
   }, 300));
 

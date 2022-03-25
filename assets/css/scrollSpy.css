@@ -45,9 +45,12 @@ nav {
     transition: .3s;
     border-bottom: 3px solid transparent;
 }
+/*
+
+ELEMENT DE TEST
 hr {
     position: fixed;
-    /* Parce que on veut 60% par le bas */
+    /* Parce que on veut 60% par le bas 
     top :40%;
     left: 0;
     right:0;
@@ -55,7 +58,7 @@ hr {
     height: 1px;
     background-color: red;
     width: 100%;
-}
+} */
 .navbar__list a.active {
     color: #4a5568;
     border-bottom: 3px solid #4a5568;
