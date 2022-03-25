@@ -12,12 +12,12 @@ Cet objet nous permet d'optimiser les performance pour eviter de faire des trait
 
 Sur cet `IntersectionObserver` lorsque l'on veut l'initialiser il prend deux parametres
 
-1. La fonction que l'on souhaite ecouter et cette fonction prend en parametre les `entries` càd les elements sur lesquels on va ecouter les intersection et
+1. Un callback donc La fonction qui sera executer lorsque l'element que l'on observe sera visible ou se masquera de la zone et cette fonction prend en parametre les `entries` càd les elements sur lesquels on va ecouter les intersection et
 2. Un second parametre qui est une option sous forme d'objets et ces options on en a 3:
 
 - **`root`**: Qui permet de preciser par rapport à quel element on va verifier les intersections et par defaut ça va etre la fenetre du navigateur mais on peux choisir une `div` ou un tout autre element HTML
-- **`rootMargin`**: Qui permet d'elargir la zone visible de l'element
-- **`threshold`**: Qui permet de dire `"Quel pourcentage de l'element doivent etre en intersection pour que cet evenement soit declencher"` et on va en preciser plusieurs, 0.5 si c'est plus de la moitier de l'element qui est visible, 1 si tout l'element est visible,0.25 si c'est seulement 25% de l'element qui est visible,...
+- **`rootMargin`**: Qui permet d'elargir la zone visible de l'element, il permet de dire `"Pour que cet element soit afficher il faut qu'il ait depasser cette marge pour etre visible"`
+- **`threshold`**: Qui permet de dire `"Quel pourcentage de l'element doivent etre en intersection pour que cet evenement soit declencher"` et on va en preciser plusieurs, 0.5 si c'est plus de la moitier de l'element qui est visible alors delenche l'evenement, 1 si tout l'element est visible,0.25 si c'est seulement 25% de l'element qui est visible,...
 Le threshold est un tableau, donc vous pouvez preciser plusieurs parametres donc si on a deux threshold ça veut dire qu'il va declencher le systeme d'observer à deux moments, une fois lorsque l'element va apparaitre dans `root` pour notre cas c'est la fenetre et une autre fois lorsque l'element va disparaitre de `root`, par exemple: threshold: `[0.5,0]` càd lorsque la motier de l'element observer sera visible càd 50% de l'element et 0 pour dire lorsque la totalité de l'element observer aura disparus de `root`
 
 ```{JS}

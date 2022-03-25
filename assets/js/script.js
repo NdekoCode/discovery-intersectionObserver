@@ -1,7 +1,7 @@
 /**
  * @description La fonction que l'on souhaite ecouter dans notre API, c'est un callBack, elle sera appeler à chaque fois qu'il y a une nouvelle intersection
  * @author NdekoCode
- * @param {IntersectionObservereEntry} entries les elements sur lesquels on va ecouter les intersection
+ * @param {IntersectionObserverEntry} entries les elements sur lesquels on va ecouter les intersection
  */
 function handleEntries (entries) {
   entries.forEach(entry => {
@@ -17,7 +17,7 @@ function handleEntries (entries) {
 
 /** @type {Object} options Les parametres à prendre en contre dans nos intersections */
 const options = {
-  // root: null,
+  root: null,
   rootMargin: "-10% 0px",
   
   treshold:[0]
