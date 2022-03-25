@@ -1,0 +1,83 @@
+*, *::before,*::after {
+    box-sizing: border-box;
+}
+
+html, body {
+    margin:0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #4a5568;
+    scroll-behavior: smooth;
+}
+body {
+    padding-top: 65px;
+}
+
+nav {
+    height: 65px;
+    display: flex;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background-color:#fff;
+    border-bottom: 1px solid #edf2f7;
+    z-index: 100;
+}
+.navbar__list {
+    display: flex;
+    align-items: center;
+    list-style: none;
+    height: 100%;
+}
+.navbar__list__item{
+
+    height: 100%;
+    margin-left: 20px;
+}
+.navbar__list a{
+    height: 100%;
+    color: #a0aec0;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    transition: .3s;
+    border-bottom: 3px solid transparent;
+}
+hr {
+    position: fixed;
+    /* Parce que on veut 60% par le bas */
+    top :40%;
+    left: 0;
+    right:0;
+    border: none;
+    height: 1px;
+    background-color: red;
+    width: 100%;
+}
+.navbar__list a.active {
+    color: #4a5568;
+    border-bottom: 3px solid #4a5568;
+}
+
+section {
+    background-color: #edf2f7;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 3em;
+    min-height: 100vh;
+}
+section:nth-child(2) {
+    background-color: #cbd5e0;
+    min-height: 50vh;
+}
+
+section:nth-child(3) {
+    background-color: #e2e8f0;
+    min-height: 300vh;
+}
+section:nth-child(4) {
+    background-color: #fff;
+}

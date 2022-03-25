@@ -43,4 +43,12 @@ Cet Object nous simplifie vraiment la vie, on peut utiliser l'intersectionObserv
 
 ## Section
 
-L'idée ça va etre de faire en sorte que les sections appairaissent au fil et à mesure du defilement de notre page, par exemple quand on a 70% d'une section qui apparait
+L'idée ça va etre de faire en sorte que les sections appairaissent au fil et à mesure du defilement de notre page, par exemple quand on a 30% d'une section qui apparait
+
+## Lazy loading
+
+L'idée ça va etre de faire en sorte que les images appairaissent au fil et à mesure du defilement de notre page, par exemple dès que une partie de l'image ou de son contenaire est visible on affiche l'image, ici il est preferable d'utiliser l'attribut `isIntersecting` de l'Object `IntersectionObserverEntry`
+
+## Système de scrollSpy
+
+Le principe est un systeme qui permet de détecter sur quelle section on se trouve sur le site et qui en fonction va selectionner l'element dans le menu qui correspond et on aura aussi la possibilité en cliquant dans le menu de scroller vers la section qui nous interesse et pour faire cela de maniere plus simple on va utiliser l'API `IntersectionObserver` et pour espicifier nos element que je souhaite espionner on va leurs rajouter un attribut `data-spy`, cela peut nous permettre d'avoir un selecteur simple dans le cas où on a beaucoup d'element
